@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.projects {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.projects .card:hover {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.05);
+}
+
+.projects .card img {
+  border-radius: 50%;
+  margin: 5px auto;
+  width: 60%;
+}
+
+.projects .card p {
+  font-size: 12px;
+  margin-bottom: 5%;
+}
+.projects .card a {
+  background-color: #ff6f00;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.projects .card a:hover {
+  background-color: #802d00;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 480px) {
+  .projects {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 770px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
