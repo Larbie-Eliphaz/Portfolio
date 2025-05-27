@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #87ceeb, #ffffff);
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .weather-app {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 400px;
+        text-align: center;
+      }
+
+      .weather-app h1 {
+        font-size: 24px;
+        margin-bottom: 50px;
+      }
+
+      .weather-app .location {
+        font-size: 24px;
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      .weather-app .temperature {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .weather-app .description {
+        font-size: 20px;
+        color: #777;
+        margin-bottom: 20px;
+      }
+
+      .weather-app .icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 20px;
+      }
+
+      .weather-app .details {
+        font-size: 16px;
+        color: #555;
+      }
+
+      .weather-app .details span {
+        display: block;
+        margin: 8px 0;
+      }
+      #city {
+        padding: 10px;
+        /* width: calc(80% - 22px); */
+        margin-bottom: 60px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: hsl(211, 100%, 50%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      button:hover {
+        background-color: hsl(211, 100%, 35%);
+      }
+      button:active {
+        background-color: hsl(210, 100%, 75%);
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="weather-app">
+      <h1>Weather App</h1>
+
+      <input type="text" id="city" placeholder="Enter city name" />
+      <button id="searchBtn" onclick="getWeatherData()">Search</button>
+      <!-- <button id="searchBtn" onclick="getWeatherData()">Search</button> -->
+
+      <div class="location">City, Country</div>
+      <img
+        src="https://via.placeholder.com/100"
+        alt="Weather Icon"
+        id="icon"
+        class="icon"
+      />
+      <div class="temperature">x°C</div>
+      <div class="description">Condition</div>
+      <!-- <div class="icon"><img src="" alt="condition icon" id="icon"></div> -->
+      <div class="details">
+        <span>Humidity: y%</span>
+        <span>Wind: z km/h</span>
+      </div>
+    </div>
+
+    <script>
+      const APIkey = `632b7079d97b485391e34234251505`;
+      // const country = `Ghana`;
+
+      async function getWeatherData() {
+        const city = document.getElementById("city").value || `Koforidua`;
+        const URL = `http://api.weatherapi.com/v1/current.json?key=632b7079d97b485391e34234251505&q=${city}&aqi=yes`;
+        const response = await fetch(URL);
+        const data = await response.json();
+        // console.log(data);
+
+        try {
+          document.getElementById("icon").src = data.current.condition.icon;
+          document.querySelector(
+            ".location"
+          ).innerText = `${data.location.name}, ${data.location.country}`;
+          document.querySelector(
+            ".temperature"
+          ).innerText = `${data.current.temp_c}°C`;
+          document.querySelector(".description").innerText =
+            data.current.condition.text;
+          document.querySelector(".details").innerHTML = `
+                <span>Humidity: ${data.current.humidity}%</span>
+                <span>Wind: ${data.current.wind_kph} km/h</span>
+            `;
+          if (data.error) {
+            throw new Error(data.error.message);
+          }
+        } catch (error) {
+          console.error("Error fetching weather data:", error);
+          alert("City not found. Please try again.");
+          return;
+        }
+
+        // console.log(data.current.condition.text);
+      }
+      getWeatherData();
+    </script>
+  </body>
+</html>

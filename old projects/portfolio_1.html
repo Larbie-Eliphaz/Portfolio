@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eliphaz Larbie</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #f7f7f7;
+        margin: 0;
+        color: #2c3e50;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+      }
+      .header {
+        padding: 10px 2rem 4em;
+        background-color: #012341 !important;
+        width: 100%;
+      }
+      .nav-bar {
+        display: flex;
+        justify-items: center;
+        justify-content: end;
+        align-items: center;
+        color: #ffffff;
+      }
+      #logo {
+        height: 30px;
+        width: 50px;
+        margin-right: auto;
+        border-radius: 8px;
+      }
+      .nav-bar .nav-items {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        justify-content: end;
+        list-style-type: none;
+      }
+      .nav-bar .nav-items .nav-links:hover {
+        /* color: #34a85a; */
+        cursor: pointer;
+        border-bottom: 2px solid red;
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .nav-bar .nav-items .nav-links {
+        margin-right: 15px;
+        padding-bottom: 3px;
+        font-size: 1.2rem;
+      }
+
+      .header #profile:hover {
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .header #profile {
+        border: 6px solid #34a85a;
+        border-radius: 50%;
+        height: 270px;
+        justify-self: center;
+        width: 280px;
+      }
+      #intro {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+        color: #f7f7f7;
+        margin-top: 50px;
+        padding: 5px 20px;
+      }
+      #intro p {
+        font-weight: bold;
+        font-size: 2rem;
+      }
+      #name {
+        color: #34a85a;
+        font-size: 3rem;
+      }
+      .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 35px;
+        margin: 30px auto;
+        /* height: 90vh; */
+        width: 60vw;
+      }
+      .about #about-img {
+        border-radius: 20px;
+        box-shadow: 2px 1px #012341;
+        height: 350px;
+        margin-right: 70px;
+        width: 300px;
+      }
+      .about div h1,
+      .skills h1,
+      .projects h1,
+      .contact .location h1 {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        font-size: 35px;
+      }
+      .about div h4 {
+        font-size: 24px;
+      }
+      .about div p {
+        font-size: 1.2em;
+      }
+      .about div h4 span {
+        color: #34a85a;
+      }
+      .about div button:hover {
+        background-color: #ffffff;
+        color: #34a85a;
+        cursor: pointer;
+        border: 2px solid #34a85a;
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .about div button {
+        border: none;
+        border-radius: 15px;
+        background-color: #34a85a;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        height: 45px;
+        margin-top: 15px;
+        padding: 10px 15px;
+        /* width: 29px; */
+      }
+
+      .skills {
+        background-color: #012341;
+        color: #ffffff;
+        text-align: center;
+        padding: 20px;
+        padding-bottom: 60px;
+        width: 100%;
+      }
+
+      .skills .skill-item:hover {
+        background-color: #34a85a;
+        color: #ffffff;
+        cursor: pointer;
+        border: 2px solid #34a85a;
+        transform: scale(1);
+        transition: all 0.3s ease-in-out;
+      }
+      .skills .skill-item {
+        background-color: #ffffff;
+        border-left: 10px solid #34a85a;
+        border-right: 8px solid #34a85a;
+        border-radius: 3px;
+        color: #012341;
+        font-size: 1.2rem;
+        margin: 15px auto;
+        padding: 2px 12px;
+        text-align: left;
+        width: 75%;
+      }
+
+      .projects {
+        text-align: center;
+        padding: 30px auto;
+        padding-bottom: 60px;
+      }
+      .projects h1 {
+        display: block;
+      }
+      .projects .project-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 1px auto;
+      }
+      .projects .project-items .card {
+        border: 1px solid;
+        border-radius: 5px;
+        display: inline-block;
+        width: 30%;
+        padding: 15px 20px;
+        margin: 10px 15px;
+      }
+      .projects .project-items .card .card-img {
+        height: 126px;
+        width: 126px;
+        border: 2px solid #012341;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .projects .project-items .card button:hover {
+        background-color: #ffffff;
+        color: #34a85a;
+        cursor: pointer;
+        border: 2px solid #34a85a;
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .projects .project-items .card button {
+        background-color: #34a85a;
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        width: 60%;
+        height: 40px;
+      }
+      .projects .project-items .card p {
+        text-align: left;
+      }
+      .contact {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background-color: #012341;
+        color: #ffffff;
+        padding: 70px 40px;
+        font-size: 1.1rem;
+        width: 100%; /* Ensure it fits the viewport */
+      }
+
+      .skills h1, .about h1,
+        .projects h1, 
+        .contact h1 {
+          margin: 40px auto;
+        }
+
+      .contact .location {
+        justify-self: center;
+      }
+      .contact .location button:hover {
+        background-color: #ffffff;
+        color: #34a85a;
+        cursor: pointer;
+        border: 2px solid #34a85a;
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .contact .location button {
+        background-color: #34a85a;
+        border: none;
+        border-radius: 5px;
+        margin: 20px auto;
+        width: 20%;
+        height: 40px;
+      }
+      .contact .location .socials {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+      .contact .location .socials span:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .contact .location .socials span {
+        /* display: inline-block; */
+        margin: 5px;
+      }
+      .contact .location .socials span img {
+        background-color: white;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        margin-right: 5px;
+      }
+      .contact form {
+        justify-self: center;
+      }
+      .contact form input,
+      textarea,
+      button {
+        background-color: #012341;
+        color: #f7f7f7;
+        width: 350px;
+      }
+      .contact form input,
+      button {
+        border: none;
+        border-bottom: 2px solid;
+        font-size: 1.1rem;
+        height: 30px;
+        margin: 10px auto;
+        margin-bottom: 20px;
+      }
+      .contact form textarea {
+        height: 100px;
+        margin: 15px auto;
+        font-size: 1.1rem;
+      }
+      .contact form button:hover {
+        background-color: #ffffff;
+        color: #34a85a;
+        cursor: pointer;
+        border: 2px solid #34a85a;
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+      }
+      .contact form button {
+        background-color: #34a85a;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        height: 40px;
+      }
+      .footer {
+        background-color: #012341;
+        color: #ffffff;
+        font-size: 1.1rem;
+        height: 20vh;
+        width: 100%; /* Ensure it fits the viewport */
+        text-align: center;
+        margin: 1px auto;
+        position: static;
+        padding-top: 30px;
+      }
+      .footer span{
+        display: inline-block;
+        margin: 10px 20px;
+      }
+      .projects .project-items .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        transition: all 0.3s ease-in-out;
+      }
+      @media screen and (max-width: 857px) {
+        .contact {
+          grid-template-columns: 1fr;
+          gap: 10%;
+        }
+      }
+      @media screen and (max-width: 771px) {
+        .skills h1,
+        .projects h1,
+        .contact h1 {
+          margin: 40px auto;
+        }
+        #intro #name {
+          font-size: 1.1em;
+        }
+        #intro {
+          font-size: 1rem;
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        #intro #profile {
+          margin-top: 20px;
+          width: 200px;
+          height: 200px;
+        }
+        .about {
+          flex-direction: column;
+          gap: 25px;
+          text-align: center;
+        }
+        .projects .project-items .card {
+          width: 80%;
+        }
+        .contact {
+          grid-template-columns: 1fr;
+          gap: 10%;
+        }
+        .contact .location button {
+          width: 40%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="header">
+      <div class="nav-bar">
+        <img src="./images/logo.jpg" alt="logo" id="logo" />
+        <ul class="nav-items">
+          <li class="nav-links">Home</li>
+          <li class="nav-links">about</li>
+          <li class="nav-links">Skills</li>
+          <li class="nav-links">Projects</li>
+          <li class="nav-links">Contact Me</li>
+        </ul>
+      </div>
+      <div id="intro">
+        <p>
+          Hi, I'm <br /><span id="name">Larbie Eliphaz</span> <br />and I'm a
+          <span id="animate">Fullstack Developer</span>
+        </p>
+        <img src="./images/mypic.jpg" alt="My profile picture" id="profile" />
+      </div>
+    </section>
+
+    <!-- About me begins -->
+    <section class="about">
+      <div>
+        <img src="./images/mypic.jpg" alt="My picture 2" id="about-img" />
+      </div>
+      <div>
+        <h1>About Me</h1>
+        <h4>Developer & <span>Software Engineer</span></h4>
+        <p>
+          I’m a software developer with a passion for solving problems through
+          code. With experience in full-stack development, I specialize in
+          building web applications using modern frameworks like React, Node.js,
+          and Django. I enjoy working on open-source projects and continuously
+          learning new technologies.
+        </p>
+        <button>Let's Talk</button>
+      </div>
+    </section>
+
+    <!-- Skills begins -->
+    <section class="skills">
+      <h1>Technical Skills</h1>
+      <div class="skill-item">
+        <h3>Languages</h3>
+        <p>JavaScript, Python, Java (loading...), Kotlin (loading...), SQL</p>
+      </div>
+      <div class="skill-item">
+        <h3>Frontend</h3>
+        <p>HTML, CSS, Bootsrap and React (loading...)</p>
+      </div>
+      <div class="skill-item">
+        <h3>Backend</h3>
+        <p>Django (loading...), Node.js(loading...)</p>
+      </div>
+      <div class="skill-item">
+        <h3>Tools</h3>
+        <p>Git (loading...)</p>
+      </div>
+      <div class="skill-item">
+        <h3>Database</h3>
+        <p>MySQL</p>
+      </div>
+    </section>
+
+    <!-- portfolio begins -->
+    <section class="projects">
+      <h1>Featured Projects</h1>
+      <div class="project-items">
+        <div class="card">
+          <img src="./images/weather.png" alt="card image" class="card-img" />
+          <h3 class="card-heading">Weather Application</h3>
+          <p class="card-text">
+            The weather application provides the users with real-time weather
+            updates and forecasts, helping them plan their daily activities.
+            With a user friendly interface, users can easily search for weather
+            conditions in their location or any other city worldide.
+          </p>
+          <button>View Project</button>
+        </div>
+        <div class="card">
+          <img src="./images/password.png" alt="card image" class="card-img" />
+          <h3 class="card-heading">Password Generator</h3>
+          <p class="card-text">
+            The password generator app is a tool that creates strong, unique
+            passwords for users, enhancing their online security. By specifying
+            password lengths and complexity, users can generate passwords taht
+            meet their specific needs.
+          </p>
+          <button>View Project</button>
+        </div>
+        <div class="card">
+          <img src="./images/todo.png" alt="card image" class="card-img" />
+          <h3 class="card-heading">Todo-List App</h3>
+          <p class="card-text">
+            The To-do list app helps users to organize their tasks and stay
+            productive by allowing them to create, edit, and prioritize their
+            To-do list.
+          </p>
+          <button>View Project</button>
+        </div>
+        <div class="card">
+          <img
+            src="./images/Rock-paper-scissors.svg"
+            alt="card image"
+            class="card-img"
+          />
+          <h3 class="card-heading">Rock Paper Scissors</h3>
+          <p class="card-text">
+            The Rock Paper Scissors game is a fun interactive game that allows
+            users to play against the computer. With a siple and intuitive
+            interface, users can enjoy a classic game that's perfect for passing
+            the time.
+          </p>
+          <button>View Project</button>
+        </div>
+        <div class="card">
+          <img
+            src="./images/coffeemachine.jpg"
+            alt="card image"
+            class="card-img"
+          />
+          <h3 class="card-heading">Virtual Coffee Machine</h3>
+          <p class="card-text">
+            The virtual coffee machine is an interactive simulation that allows
+            users design and brew their perfect cup of coffee. With various
+            coffee options, users can experiment with different flavour and
+            recipes.
+          </p>
+          <button>View Project</button>
+        </div>
+        <div class="card">
+          <img
+            src="./images/e-commerce .jpg"
+            alt="card image"
+            class="card-img"
+          />
+          <h3 class="card-heading">E-commerce website</h3>
+          <p class="card-text">
+            The E-commerce website is an interactive Online shop that allows
+            users to buy items from the shop. With various products available,
+            users can choose from a wide range of products in different
+            categories.
+          </p>
+          <button>View Project</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact begins -->
+    <section class="contact">
+      <div class="location">
+        <h1>Contact Me</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae a
+          deleniti eligendi nemo illo hic? Obcaecati, nesciunt atque sequi
+          quidem eius eos nostrum consequatur.
+        </p>
+        <button>Download CV</button>
+        <div class="socials">
+          <span><img src="./images/whatsapp.svg" alt="" />whatsapp</span> <br />
+          <span><img src="./images/facebook.svg" alt="" />facebook</span> <br />
+          <span><img src="./images/telegram.svg" alt="" />telegram</span> <br />
+          <span><img src="./images/snapchat.svg" alt="" />snapchat</span> <br />
+          <span><img src="./images/instagram.svg" alt="" />instagram</span>
+        </div>
+      </div>
+      <form
+        action="mailto:eliphazlarbie3@gmail.com"
+        target="_blank"
+        method="post"
+      >
+        <input
+          type="text"
+          name="name"
+          id="name-input"
+          placeholder="Fullname"
+        /><br />
+        <input
+          type="email"
+          name="email"
+          id="email-input"
+          placeholder="email"
+        /><br />
+        <textarea
+          name="message"
+          id="msg"
+          placeholder="Your message here"
+        ></textarea
+        ><br />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <!-- Footer begins -->
+    <section class="footer">
+      <div>
+        <span>Designed by Eliphaz</span>
+        <span id="copyright">copyright 2025</span>
+      </div>
+    </section>
+
+    <!-- Script -->
+    <script>
+      let right = document.getElementById("copyright");
+
+      let year = new Date();
+      right.textContent = `copyright ${year.getFullYear()}`;
+    </script>
+  </body>
+</html>
+

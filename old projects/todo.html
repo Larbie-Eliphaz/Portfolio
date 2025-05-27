@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #012341; /* Light blue background */
+        color: #000; /* Ensure text is visible on light background */
+      }
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: hsl(208, 97%, 83%);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        color: #000; /* Text color for container */
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .todo-form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+      .todo-form input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      .todo-form button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #28a745;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .todo-form button:hover {
+        background-color: #218838;
+      }
+      .todo-list {
+        list-style: none;
+        padding: 0;
+      }
+      .todo-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        background: #f9f9f9;
+      }
+      .remove {
+        border: none;
+        background-color: #dc3545;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .todo-list li button:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo List</h1>
+      <div class="todo-form">
+        <input type="text" placeholder="Add a new task" required id="todo" />
+        <button onclick="createComponents()">Add</button>
+      </div>
+      <ul class="todo-list">
+        <!-- Todo items will be added here dynamically -->
+      </ul>
+    </div>
+
+    <script>
+      const ul = document.getElementsByClassName("todo-list")[0];
+
+      function createComponents() {
+        const listItem = document.createElement("li");
+        listItem.textContent = document.getElementById("todo").value;
+
+        removeTodo = document.createElement("button");
+        removeTodo.classList.add("remove");
+        removeTodo.textContent = "Remove";
+
+        listItem.appendChild(removeTodo);
+        ul.appendChild(listItem);
+
+        // Add event listener to the newly created "Remove" button
+        removeTodo.addEventListener("click", function () {
+          DeleteTodo(removeTodo);
+        });
+
+        // Reattach event listeners to all "Remove" buttons
+        const buttons = document.querySelectorAll(".remove");
+        buttons.forEach((button) => {
+          button.removeEventListener("click", function () {
+            DeleteTodo(button);
+          });
+            // Reattach the event listener
+          button.addEventListener("click", function () {
+            DeleteTodo(button);
+          });
+        });
+        document.getElementById("todo").value = null;
+      }
+
+      // Function to delete a todo item
+      function DeleteTodo(button) {
+        button.parentNode.remove();
+        btns = document.querySelectorAll(".remove");
+      }
+    </script>
+  </body>
+</html>
