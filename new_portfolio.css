@@ -224,7 +224,7 @@ h1 {
 
 .projects > a {
   margin-top: 5%;
-  width: 200px;
+  width: 200px !important;
 }
 
 .skills {
@@ -393,8 +393,8 @@ h1 {
   margin-right: 6px;
 }
 .footer .socials span a {
-  text-decoration: none;
-  color: var(--footer-text);
+  text-decoration: none !important;
+  color: var(--footer-text) !important;
 }
 
 /* Mobile screen size */
