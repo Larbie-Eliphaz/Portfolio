@@ -1,2 +1,2 @@
 # Portfolio
-All my works and practices
+All my works and other stuffs on my tech journey

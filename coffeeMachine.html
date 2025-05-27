@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Classes</title>
+    <style>
+      body {
+        font-family: cursive;
+        text-align: center;
+        background-image: url(./images/coffeemachine.jpg);
+      }
+      section {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        height: 450px;
+        margin: 70px auto;
+        opacity: 0.95;
+        padding: 20px;
+        padding-top: 3%;
+        width: 70%;
+      }
+
+      h2 {
+        color: #003f7f;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .left,
+      .right {
+        text-align: left;
+        border-radius: 10px;
+        padding: 20px;
+        height: 150px;
+        margin-right: 5px;
+        width: 48%;
+      }
+
+      .left label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .right img {
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        background-color: #eee;
+        display: block;
+        margin-bottom: 10px;
+        animation: ease-in-out 0.5s;
+        transition: transform 0.3s ease;
+        transform: scale(1.05);
+      }
+
+      .right p {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .btn:active {
+        background-color: #003f7f;
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>Select Your Coffee</h2>
+      <div class="container">
+        <div class="left">
+          <label
+            ><input type="radio" name="coffee" value="Espresso" id="espresso" />
+            Espresso</label
+          >
+          <label
+            ><input type="radio" name="coffee" value="Latte" id="latte" />
+            Latte</label
+          >
+          <label
+            ><input
+              type="radio"
+              name="coffee"
+              value="Cappuccino"
+              id="cappuccino"
+            />
+            Cappuccino</label
+          >
+          <button onclick="makePurchase()" class="btn">Buy Now</button>
+        </div>
+        <div class="right">
+          <img src="#" alt="" id="coffeeImage" />
+          <p id="orderText">Your order will appear here.</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const Cap = document.getElementById("cappuccino");
+      const lat = document.getElementById("latte");
+      const esp = document.getElementById("espresso");
+
+      // EACH MENU AND IT'S RESOURCES NEEDED TO MAKE
+      const MENU = {
+        espresso: {
+          ingredients: { water: 50, coffee: 18, milk: 0 },
+          price: 1.5,
+        },
+        latte: {
+          ingredients: { water: 200, coffee: 24, milk: 150 },
+          price: 2.5,
+        },
+        cappuccino: {
+          ingredients: { water: 250, coffee: 24, milk: 100 },
+          price: 3,
+        },
+      };
+      // MACHINE RESOURCES
+      var Resources = {
+        water: 300,
+        milk: 200,
+        coffee: 100,
+      };
+
+      let isRunning = true;
+      var money = 0;
+
+      // ACCEPTING USER INPUTS
+
+      //   console.log(order);
+      function makePurchase() {
+        let order;
+        if (Cap.checked) {
+          order = "cappuccino";
+        } else if (lat.checked) {
+          order = "latte";
+        } else if (esp.checked) {
+          order = "espresso";
+        }
+
+        if (order === "report") {
+          console.log(
+            `Water:${Resources.water} \nMilk:${Resources.milk} \nCoffee:${
+              Resources.coffee
+            } \nMoney:$${money.toFixed(2)}`
+          );
+        } else if (order === "off") {
+          isRunning = false;
+        } else if (
+          order === "espresso" ||
+          order === "latte" ||
+          order === "cappuccino"
+        ) {
+          if (checkResources(order)) {
+            if (isTransactionSuccess(order)) {
+              makeCoffee(order);
+            }
+          }
+        } else {
+          window.alert("PLEASE SELECT A VALID DISH");
+        }
+      }
+
+      function checkResources(coffeeName) {
+        // let coffeeName = coffeeName;
+        let coffeeNeeded;
+        let waterNeeded;
+        let milkNeeded;
+
+        if (coffeeName === "espresso") {
+          coffeeNeeded = MENU.espresso.ingredients.coffee;
+          waterNeeded = MENU.espresso.ingredients.water;
+          milkNeeded = MENU.espresso.ingredients.milk;
+        } else if (coffeeName === "latte") {
+          coffeeNeeded = MENU.latte.ingredients.coffee;
+          waterNeeded = MENU.latte.ingredients.water;
+          milkNeeded = MENU.latte.ingredients.milk;
+        } else if (coffeeName === "cappuccino") {
+          coffeeNeeded = MENU.cappuccino.ingredients.coffee;
+          waterNeeded = MENU.cappuccino.ingredients.water;
+          milkNeeded = MENU.cappuccino.ingredients.milk;
+        }
+
+        if (coffeeNeeded > Resources.coffee) {
+          document.getElementById(
+            "orderText"
+          ).innerText = `The coffee left is not enough for ${coffeeName}`;
+          return false;
+        }
+        if (waterNeeded > Resources.water) {
+          document.getElementById(
+            "orderText"
+          ).innerText = `The Water left is not enough for ${coffeeName}`;
+          return false;
+        }
+        if (milkNeeded > Resources.milk) {
+          document.getElementById(
+            "orderText"
+          ).innerText = `The Milk left is not enough for ${coffeeName}`;
+          return false;
+        }
+
+        return true;
+      }
+
+      function processCoins() {
+        window.alert("INSERT COINS PLEASE");
+        let quaters = window.prompt("How many quaters? ") * 0.25;
+        let dimes = window.prompt("How many dimes? ") * 0.1;
+        let nickels = window.prompt("How many nickels? ") * 0.05;
+        let pennies = window.prompt("How many pennies? ") * 0.01;
+        return quaters + dimes + nickels + pennies;
+      }
+
+      function isTransactionSuccess(coffeeName) {
+        let price;
+        let change = 0;
+        let moneyPaid = processCoins();
+
+        if (coffeeName === "espresso") {
+          price = MENU.espresso.price;
+        } else if (coffeeName === "latte") {
+          price = MENU.latte.price;
+        } else if (coffeeName === "cappuccino") {
+          price = MENU.cappuccino.price;
+        }
+
+        if (moneyPaid === price) {
+          money += price;
+          return true;
+        } else if (moneyPaid > price) {
+          money += price;
+          change = moneyPaid - price;
+          window.alert(`Here is a change of ${change.toFixed(2)}`);
+          return true;
+        } else if (moneyPaid < price) {
+          window.alert("Not enough coins. Money refunded.");
+          return false;
+        }
+      }
+
+      function makeCoffee(coffeeName) {
+        let coffeeNeeded;
+        let waterNeeded;
+        let milkNeeded;
+
+        if (coffeeName === "espresso") {
+          coffeeNeeded = MENU.espresso.ingredients.coffee;
+          waterNeeded = MENU.espresso.ingredients.water;
+          milkNeeded = MENU.espresso.ingredients.milk;
+        } else if (coffeeName === "latte") {
+          coffeeNeeded = MENU.latte.ingredients.coffee;
+          waterNeeded = MENU.latte.ingredients.water;
+          milkNeeded = MENU.latte.ingredients.milk;
+        } else if (coffeeName === "cappuccino") {
+          coffeeNeeded = MENU.cappuccino.ingredients.coffee;
+          waterNeeded = MENU.cappuccino.ingredients.water;
+          milkNeeded = MENU.cappuccino.ingredients.milk;
+        }
+
+        Resources.coffee -= coffeeNeeded;
+        Resources.milk -= milkNeeded;
+        Resources.water -= waterNeeded;
+        document.getElementById(
+          "orderText"
+        ).innerText = `Your ${coffeeName} is ready! Enjoy!!`;
+        document.getElementById("coffeeImage").src = `./images/${coffeeName}.jpg`;
+        document.getElementById("coffeeImage").alt = `${coffeeName} Image`;
+        // console.log(`Here is your ${coffeeName}☕. Enjoy!!`);
+      }
+    </script>
+  </body>
+</html>

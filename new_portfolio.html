@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./frameworks/bootstrap.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ELiphaz's Portfolio</title>
+    <link rel="stylesheet" href="./new_portfolio.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bgdark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand logo" href="#"
+          >E<span style="color: red">T</span>S</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-menu">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#intro"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-house"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+                  />
+                </svg>
+                Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Me</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="intro" id="intro">
+      <div>
+        <p>
+          Hi, I'm
+          <span style="color: var(--icon-hover); font-weight: bold"
+            >Larbie Eliphaz</span
+          >
+          <br />A Frontend Developer
+        </p>
+        <a href="#about" target="_blank">About Me ➡</a>
+      </div>
+      <img src="./images/mypic.jpg" alt="My profile picture" />
+    </section>
+
+    <section class="about" id="about">
+      <img src="./images/mypic.jpg" alt="my picture" />
+      <div>
+        <h1>About Me</h1>
+        <h4>
+          Developer &
+          <span style="color: var(--icon-hover)">Software Engineer</span>
+        </h4>
+        <p>
+          I’m a software developer with a passion for solving problems through
+          code. With experience in full-stack development, I specialize in
+          building web applications using modern frameworks like React, Node.js,
+          and Django. I enjoy working on open-source projects and continuously
+          learning new technologies.
+        </p>
+        <a href="#contact">Let's Talk</a>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <h1>Featured Projects</h1>
+      <hr />
+
+      <div class="card">
+        <img
+          src="./images/weather.png"
+          class="card-img-top"
+          alt="..card image."
+        />
+        <div class="card-body">
+          <h5 class="card-title">Weather Application</h5>
+          <p class="card-text">
+            The weather application provides the users with real-time weather
+            updates and forecasts, helping them plan their daily activities.
+            With a user friendly interface, users can easily search for weather
+            conditions in their location or any other city world wide.
+          </p>
+          <a href="./old projects/weather.html" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/todo.png" alt="card image" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">Todo-List App</h5>
+          <p class="card-text">
+            The To-do list app helps users to organize their tasks and stay
+            productive by allowing them to create, edit, and prioritize their
+            To-do list. With a user-friendly interface, users can easily add
+            tasks, set deadlines, and mark them as complete.
+          </p>
+          <a href="./old projects/todo.html" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="./images/e-commerce .jpg"
+          class="card-img-top"
+          alt="card image"
+        />
+        <div class="card-body">
+          <h5 class="card-title">E-commerce website</h5>
+          <p class="card-text">
+            The E-commerce website is an interactive Online shop that allows
+            users to buy items from the shop. With various products available,
+            users can choose from a wide range of products in different
+            categories.
+          </p>
+          <a href="./ecommerce.html" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="./images/coffeemachine.jpg"
+          class="card-img-top"
+          alt="card image"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Virtual Coffee Machine</h5>
+          <p class="card-text">
+            The virtual coffee machine is an interactive simulation that allows
+            users design and brew their perfect cup of coffee. With various
+            coffee options, users can experiment with different flavour and
+            recipes.
+          </p>
+          <a href="./coffeeMachine.html" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="./images/Rock-paper-scissors.svg"
+          class="card-img-top"
+          alt="card image"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Rock Paper Scissors</h5>
+          <p class="card-text">
+            The Rock Paper Scissors game is a fun interactive game that allows
+            users to play against the computer. With a siple and intuitive
+            interface, users can enjoy a classic game that's perfect for passing
+            the time.
+          </p>
+          <a href="./rps_game.html" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/drum.jpg" alt="card image" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">Drum Kit App</h5>
+          <p class="card-text">
+            The Drum Kit app is an interactive web application that allows users
+            to play different drum sounds by clicking on the drum pads or using
+            the keyboard. The app features a variety of drum sounds, including
+            kick, snare, hi-hat, kick-bass and others, providing a fun and
+            engaging experience for music enthusiasts.
+          </p>
+          <a href="./old projects/Drum Kit/index.html" target="_blank"
+            >View Project</a
+          >
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="./images/password.png"
+          alt="card image"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Password Generator</h5>
+          <p class="card-text">
+            The password generator app is a tool that creates strong, unique
+            passwords for users, enhancing their online security. By specifying
+            password lengths and complexity, users can generate passwords taht
+            meet their specific needs.
+          </p>
+          <a href="./passwordgen.html" target="_blank">View Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <h1>Technical Skills</h1>
+      <div class="skill-item">
+        <h4>Languages</h4>
+        <p>JavaScript, Python, Java (loading...), Kotlin (loading...), SQL</p>
+      </div>
+      <div class="skill-item">
+        <h4>Frontend</h4>
+        <p>HTML, CSS, Bootstrap and React (loading...)</p>
+      </div>
+      <div class="skill-item">
+        <h4>Backend</h4>
+        <p>Django (loading...), Node.js(loading...)</p>
+      </div>
+      <div class="skill-item">
+        <h4>Tools</h4>
+        <p>Git & Github</p>
+      </div>
+      <div class="skill-item">
+        <h4>Database</h4>
+        <p>MySQL</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="location">
+        <h1>Contact Me</h1>
+        <p>
+          Interested in collaborating or need a frontend developer? Reach
+          out—I’m always open to new opportunities and ideas!
+        </p>
+        <a href="" target="_blank">Download CV</a>
+      </div>
+      <form
+        action="mailto:eliphazlarbie3@gmail.com"
+        target="_blank"
+        method="post"
+      >
+        <input
+          type="text"
+          name="name"
+          id="name-input"
+          placeholder="Fullname"
+        /><br />
+        <input
+          type="email"
+          name="email"
+          id="email-input"
+          placeholder="email"
+        /><br />
+        <textarea
+          name="message"
+          id="msg"
+          placeholder="Your message here"
+        ></textarea
+        ><br />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <section class="footer">
+      <div class="socials">
+        <span
+          ><img
+            src="./images/whatsapp.svg"
+            alt="wa.me/0508348125"
+          />whatsapp</span
+        >
+        <span><img src="./images/facebook.svg" alt="" />facebook</span>
+        <span><img src="./images/telegram.svg" alt="" />telegram</span>
+        <span><img src="./images/snapchat.svg" alt="" />snapchat</span>
+        <span><img src="./images/instagram.svg" alt="" />instagram</span>
+      </div>
+      <div class="copyright">
+        <p>&copy; <span id="yr"></span> Larbie Eliphaz. All rights reserved.</p>
+      </div>
+    </section>
+
+    <script src="./frameworks/bootstrap.min.js"></script>
+    <script>
+      document.getElementById("yr").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
