@@ -6,6 +6,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ELiphaz's Portfolio</title>
@@ -67,7 +71,7 @@
 
     <section class="intro" id="intro">
       <div>
-        <p>
+        <p class="animate__animated animate__fadeInLeft animate__delay-1s">
           Hi, I'm
           <span style="color: var(--icon-hover); font-weight: bold"
             >Larbie Eliphaz</span
@@ -76,25 +80,25 @@
         </p>
         <a href="#about" target="_blank">About Me ➡</a>
       </div>
-      <img src="./images/mypic.jpg" alt="My profile picture" />
+      <img src="./images/mypic.jpg" alt="My profile picture" class="animate__animated animate__fadeInRight animate__delay-1s"/>
     </section>
 
     <section class="about" id="about">
-      <img src="./images/mypic.jpg" alt="my picture" />
+      <img src="./images/mypic.jpg" alt="my picture" class="animate__animated animate__fadeInLeft animate__delay-1s"/>
       <div>
-        <h1>About Me</h1>
-        <h4>
+        <h1 class="animate__animated animate__fadeInDown animate__delay-2s">About Me</h1>
+        <h4 class="animate__animated animate__fadeInDown animate__delay-1s">
           Developer &
           <span style="color: var(--icon-hover)">Software Engineer</span>
         </h4>
-        <p>
+        <p class="animate__animated animate__fadeInDown animate__delay-1s">
           I’m a software developer with a passion for solving problems through
           code. With experience in full-stack development, I specialize in
           building web applications using modern frameworks like React, Node.js,
           and Django. I enjoy working on open-source projects and continuously
           learning new technologies.
         </p>
-        <a href="#contact">Let's Talk</a>
+        <a href="#contact" class="animate__animated animate__fadeInDown animate__delay-1s">Let's Talk</a>
       </div>
     </section>
 
@@ -156,27 +160,34 @@
     </section>
 
     <section class="skills" id="skills">
-      <h1>Technical Skills</h1>
-      <div class="skill-item">
+
+      <h1 class="animate__animated animate__fadeInDown">Technical Skills</h1>
+
+      <div class="skill-item animate__animated animate__fadeInDown animate__fast animate__delay-5s">
         <h4>Languages</h4>
         <p>JavaScript, Python, Java (loading...), Kotlin (loading...), SQL</p>
       </div>
-      <div class="skill-item">
+      
+      <div class="skill-item animate__animated animate__fadeInDown animate__fast animate__delay-4s">
         <h4>Frontend</h4>
         <p>HTML, CSS, Bootstrap and React (loading...)</p>
       </div>
-      <div class="skill-item">
+      
+      <div class="skill-item animate__animated animate__fadeInDown animate__fast animate__delay-3s">
         <h4>Backend</h4>
         <p>Node.js</p>
       </div>
-      <div class="skill-item">
+
+      <div class="skill-item animate__animated animate__fadeInDown animate__fast animate__delay-2s">
         <h4>Tools</h4>
         <p>Git & Github</p>
       </div>
-      <div class="skill-item">
+
+      <div class="skill-item animate__animated animate__fadeInDown animate__faster animate__delay-1s">
         <h4>Database</h4>
         <p>MySQL</p>
       </div>
+
     </section>
 
     <section class="contact" id="contact">
