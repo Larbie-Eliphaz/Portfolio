@@ -293,12 +293,16 @@ body {
 
   .intro {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns:  1fr;
     justify-content: center;
     align-items: center;
     padding: 13% 5% 10%;
   }
-
+  .intro img{
+    width: 50%;
+    justify-self: center;
+    margin-top: 14%;
+  }
   .products img {
     margin: 5% auto;
     width: 80%;
@@ -318,7 +322,8 @@ body {
     grid-template-columns: 1fr;
   }
   .exclusive img {
-    width: 80%;
+    width: 50%;
+    height: auto;
   }
 
   .review {
@@ -351,7 +356,7 @@ body {
   }
   .products img {
     margin: 5% auto;
-    width: 90%;
+    width: 50%;
   }
 
   .fproducts {
